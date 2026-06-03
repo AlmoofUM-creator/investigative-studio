@@ -1,0 +1,64 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  color: #667eea;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.getting-started {
+  background: #f0f4ff;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.getting-started h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.getting-started ol {
+  margin-left: 2rem;
+  line-height: 2;
+}
+
+.getting-started li {
+  color: #333;
+}

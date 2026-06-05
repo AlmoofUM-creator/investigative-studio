@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# React build
+/frontend/build
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# Environment variables
+.env
+.env.local
+backend/.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Database
+*.sqlite
+*.sqlite3
+postgres_data/
+
+# Docker
+.docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive data
+secrets.json
+credentials.json
+private_keys/
+
+# Analysis outputs
+reports/
+exports/
+outputs/

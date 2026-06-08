@@ -15,9 +15,9 @@ function App() {
 
   const fetchInvestigations = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/investigations`);
+      const response = await fetch('http://127.0.0.1:8000/investigations');
       const data = await response.json();
-      setInvestigations(data.investigations || []);
+      setInvestigations(data);
     } catch (error) {
       console.error('Error fetching investigations:', error);
     }

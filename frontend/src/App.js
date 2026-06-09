@@ -90,7 +90,7 @@ function App() {
           <div>
             <h2>Archive Screen</h2>
             <p>
-              REspository of all collected evidence, documents, imegry, video, geospatial references, and supporting records.
+              Respository of all collected evidence, documents, imegry, video, geospatial references, and supporting records.
             </p>
 
             <h3>Evidence Categories</h3>
@@ -107,7 +107,30 @@ function App() {
             </p>
           </div>
         )}  
-        {currentPage === 'credits' && <h2>Credits Screen</h2>}
+        {currentPage === 'credits' && (
+          <div>
+            <h2>Credits</h2>
+
+            <p>
+              FIELD SYSTEM was developed as an investigative journalism platform for geographic, temporal, and archival evidence presentation.
+            <p>
+
+            <h3>Source & Evidence</h3>
+            <p>
+              All source materials, documents, imagery, video, testimony, and records will be cited and preserved within the archive.
+            <p>
+
+            <h3>AI Assistance Disclosure</h3>
+            <p>
+              AI tools were used to assist with software development, research organization, and platform construction. All investigative findings, evidence review, and editorial decisions remain under human control.
+            </p>
+
+            <h3>Project Notes</h3>
+            <p>
+             This platform is intended to provide transparant access to evidence, context, and supporting documentation.
+            </p>
+          </div>
+)}
       </main>
 
       <footer className="app-footer">

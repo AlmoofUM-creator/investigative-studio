@@ -56,8 +56,8 @@ function App() {
           >
             Credits
           </button>
-        </nav>
-
+      </nav>
+      
       <main className="app-main">
         {currentPage === 'welcome' && (
           <div>
@@ -86,7 +86,27 @@ function App() {
         </div>
         )}
         {currentPage === 'map' && <MapView />}
-        {currentPage === 'archive' && <h2>Archive Screen</h2>}
+        {currentPage === 'archive' && (
+          <div>
+            <h2>Archive Screen</h2>
+            <p>
+              REspository of all collected evidence, documents, imegry, video, geospatial references, and supporting records.
+            </p>
+
+            <h3>Evidence Categories</h3>
+            <ul>
+              <li>Documents: Official records, reports, and publications.</li>
+              <li>Media: Photos, videos, and audio recordings.</li>
+              <li>Geospatial: Maps, satellite imagery, and location data.</li>
+              <li>Testimonies: Interviews, statements, and witness accounts.</li>
+            </ul>
+
+            <h3>Navigation</h3>
+            <p>
+              Materials will be indexed by timestamp, location, and source.
+            </p>
+          </div>
+        )}  
         {currentPage === 'credits' && <h2>Credits Screen</h2>}
       </main>
 

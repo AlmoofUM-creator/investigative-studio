@@ -113,12 +113,12 @@ function App() {
 
             <p>
               FIELD SYSTEM was developed as an investigative journalism platform for geographic, temporal, and archival evidence presentation.
-            <p>
+            </p>
 
             <h3>Source & Evidence</h3>
             <p>
               All source materials, documents, imagery, video, testimony, and records will be cited and preserved within the archive.
-            <p>
+            </p>
 
             <h3>AI Assistance Disclosure</h3>
             <p>

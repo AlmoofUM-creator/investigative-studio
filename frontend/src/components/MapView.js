@@ -1,4 +1,6 @@
 import React from 'react';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import './MapView.css';
 
 function MapView() {
@@ -8,43 +10,43 @@ return (
   <h2>FIELD SYSTEM MAP</h2>
 
   <div className="map-container">
-    <div className="map-placeholder">
 
-      <h3>Evidence Map</h3>
+    <MapContainer
+      center={[34.0522, -118.2437]}
+      zoom={10}
+      style={{ height: '500px', width: '100%' }}
+    >
 
-      <p>
-        Geographic and temporal evidence visualization will appear here.
-      </p>
+     <TileLayer
+       attribution='&copy; OpenStreetMap contributors'
+       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+     />
 
-      <p>
-        Events, documents, images, video, and testimony records will be
-        displayed by location and timestamp.
-      </p>
+   </MapContainer>
+ 
+ </div>
 
-    </div>
-  </div>
+ <div className="map-info">
 
-  <div className="map-info">
+   <h3>Controls</h3>
 
-    <h3>Controls</h3>
+   <ul>
+     <li>← Previous timestamp</li>
+     <li>→ Next timestamp</li>     
+     <li>↑ Layer up</li>
+     <li>↓ Layer down</li>
+     <li>Ctrl + Play = Timeline playback</li>
+   </ul>
 
-    <ul>
-      <li>← Previous timestamp</li>
-      <li>→ Next timestamp</li>
-      <li>↑ Layer up</li>
-      <li>↓ Layer down</li>
-      <li>Ctrl + Play = Timeline playback</li>
-    </ul>
+   <h3>Active Layers</h3>
 
-    <h3>Active Layers</h3>
-
-    <ul>
-      <li>Evidence</li>
-      <li>Imagery</li>
-      <li>Documents</li>
-      <li>Video</li>
-      <li>Historical Context</li>
-    </ul>
+   <ul>
+     <li>Evidence</li>
+     <li>Imagery</li>
+     <li>Documents</li>
+     <li>Video</li>
+     <li>Historical Context</li>   
+   </ul>
 
   </div>
 

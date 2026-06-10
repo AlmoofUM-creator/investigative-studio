@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapView.css';
 
@@ -22,7 +22,14 @@ return (
        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
      />
 
-   </MapContainer>
+    <Marker position={[34.0522, -118.2437]}>
+      <Popup>
+        Test Evidence Record
+      </Popup>
+    </Marker>
+     
+
+  </MapContainer>
  
  </div>
 

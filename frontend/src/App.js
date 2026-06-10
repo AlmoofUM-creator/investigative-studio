@@ -120,6 +120,19 @@ Name={currentPage === 'map' ? 'active' : ''}
         {currentPage === 'archive' && (
           <div>
             <h2>Archive Screen</h2>
+          <div className="archive-card">
+            <h3>LA-PROTEST-001</h3>
+
+            <p>Records: 4</p>
+            <p>Evidence: 1</p>
+            <p>Testimony: 1</p>
+            <p>Video: 1</p>
+            <p>Documents: 1</p>
+
+            <button> 
+              Open Investigation
+            </button>
+          </div>
             <p>
               Respository of all collected evidence, documents, imegry, video, geospatial references, and supporting records.
             </p>

@@ -129,7 +129,7 @@ Name={currentPage === 'map' ? 'active' : ''}
             <p>Video: 1</p>
             <p>Documents: 1</p>
 
-            <button> 
+            <button onClick={() => setCurrentPage('map')}>
               Open Investigation
             </button>
           </div>

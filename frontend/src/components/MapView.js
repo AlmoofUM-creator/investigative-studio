@@ -4,7 +4,18 @@ import 'leaflet/dist/leaflet.css';
 import './MapView.css';
 
 function MapView() {
+
+const evidence = [
+  {
+   id: 1,
+   title: "Test Evidence Record",
+   lat: 34.0522,
+   lng: -118.2437
+  }
+];
+
 return (
+
   <div className="map-view">
 
   <h2>FIELD SYSTEM MAP</h2>
@@ -21,13 +32,17 @@ return (
        attribution='&copy; OpenStreetMap contributors'
        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
      />
-
-    <Marker position={[34.0522, -118.2437]}>
-      <Popup>
-        Test Evidence Record
-      </Popup>
-    </Marker>
      
+     {evidence.map(record => (
+      <Marker
+        key={record.id}
+        position={[record.lat, record.lng]}
+      >
+        <Popup>
+          {record.title}
+        </Popup>
+      </Marker>
+))}     
 
   </MapContainer>
  

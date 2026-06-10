@@ -3,8 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapView.css';
 
-function MapView(){ 
-const [activeInvestigation, setActiveInvestigation] = useState(null);
+function MapView({ activeInvestigation }) { 
 const evidence = [
   {
    id: 1,
@@ -51,6 +50,12 @@ const evidence = [
 }
 ];
 
+const filteredEvidence = activeInvestigation
+  ? evidence.filter(
+      record => record.investigation === activeInvestigation
+    )
+  : evidence;
+
 return (
 
   <div className="map-view">
@@ -70,15 +75,10 @@ return (
        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
      />
      
-     {evidence.map(record => (
+     {filteredEvidence.map(record => (
       <Marker
         key={record.id}
         position={[record.lat, record.lng]}
-        eventHandlers={{
-          click: () => {
-            setActiveInvestigation(record.investigation);
-          },
-        }}
       >
         <Popup>
           <strong>{record.title}</strong>

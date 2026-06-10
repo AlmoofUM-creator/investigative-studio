@@ -5,6 +5,7 @@ import MapView from './components/MapView';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('welcome');
+  const [activeInvestigation, setActiveInvestigation] = useState(null);
   const [investigations, setInvestigations] = useState([]);
   const evidence = [
     {
@@ -116,7 +117,9 @@ Name={currentPage === 'map' ? 'active' : ''}
           </button>
         </div>
         )}
-        {currentPage === 'map' && <MapView />}
+        {currentPage === 'map' && (
+         <MapView activeInvestigation={activeInvestigation} />
+        )}
         {currentPage === 'archive' && (
           <div>
             <h2>Archive Screen</h2>
@@ -129,7 +132,12 @@ Name={currentPage === 'map' ? 'active' : ''}
             <p>Video: 1</p>
             <p>Documents: 1</p>
 
-            <button onClick={() => setCurrentPage('map')}>
+            <button
+              onClick={() => {
+                setActiveInvestigation('LA-PROTEST-001');
+                setCurrentPage('map');
+              }}
+            >
               Open Investigation
             </button>
           </div>

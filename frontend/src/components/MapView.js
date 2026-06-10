@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapView.css';
 
-function MapView() {
-
+function MapView(){ 
+const [activeInvestigation, setActiveInvestigation] = useState(null);
 const evidence = [
   {
    id: 1,
@@ -74,6 +74,11 @@ return (
       <Marker
         key={record.id}
         position={[record.lat, record.lng]}
+        eventHandlers={{
+          click: () => {
+            setActiveInvestigation(record.investigation);
+          },
+        }}
       >
         <Popup>
           <strong>{record.title}</strong>
@@ -117,8 +122,25 @@ return (
 
   </div>
 
-</div>
+<div className="investigation-panel">
+  
+  <h3>Active Investigation</h3>
 
+  {activeInvestigation ? (
+   <div>
+     <p><strong>{activeInvestigation}</strong></p>
+     <p>Records: 4</p>
+     <p>Evidence: 1</p>
+     <p>Testimony: 1</p>
+     <p>Video: 1</p>
+     <p>Documents: 1</p>
+   </div>
+
+)  : (
+   <p>Select a marker.</p>
+)}
+</div>
+</div>
 );
 }
 

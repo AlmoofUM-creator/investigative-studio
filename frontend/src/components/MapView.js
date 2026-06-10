@@ -11,7 +11,28 @@ const evidence = [
    title: "Test Evidence Record",
    lat: 34.0522,
    lng: -118.2437
-  }
+  },
+
+{
+   id: 2,
+   title:"Witness Interview",
+   lat: 34.0600,
+   lng: -118.2500
+},
+
+{
+   id: 3,
+   title:"Video Evidence",
+   lat: 34.0450,
+   lng:-118.2350
+},
+
+{
+   id: 4,
+   title: "document Archive",
+   lat: 34.0700,
+   lng: -118.2600
+}
 ];
 
 return (

@@ -6,6 +6,36 @@ import MapView from './components/MapView';
 function App() {
   const [currentPage, setCurrentPage] = useState('welcome');
   const [investigations, setInvestigations] = useState([]);
+  const evidence = [
+    {
+      id: 1,
+      title: "Test Evidence Record",
+      lat: 34.0522,
+      lng: -118.2437,
+      category: "Evidence" 
+    },
+    {
+     id: 2,
+     title: "Witness Interview",
+     lat: 34.0600,
+     lng: -118.2500,
+     category: "Testimony" 
+    },
+    {
+     id: 3,
+     title: "Video Evidence",
+     lat:34.0450,
+     lng: -118.2350,
+     category: "Video"
+    },
+    {
+     id: 4,
+     title: "Document Archive",
+     lat: 34.0700,
+     lng: -118.2600,
+     category: "Document"
+   }
+];
 
   useEffect(() => {
     // Fetch investigations from backend
@@ -37,7 +67,8 @@ function App() {
           Welcome
         </button>
         <button
-          className={currentPage === 'map' ? 'active' : ''}
+          classo
+Name={currentPage === 'map' ? 'active' : ''}
           onClick={() => setCurrentPage('map')}
         >
           Map

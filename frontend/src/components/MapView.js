@@ -9,6 +9,9 @@ const evidence = [
   {
    id: 1,
    title: "Test Evidence Record",
+   category: "Evidence",
+   date: "2026-06-10",
+   description: "Initial evidence marker used for testing.",
    lat: 34.0522,
    lng: -118.2437
   },
@@ -16,6 +19,9 @@ const evidence = [
 {
    id: 2,
    title:"Witness Interview",
+   category: "Testimony",
+   date: "2026-06-09",
+   description: "Recorded witness statement.",
    lat: 34.0600,
    lng: -118.2500
 },
@@ -23,13 +29,19 @@ const evidence = [
 {
    id: 3,
    title:"Video Evidence",
+   category: "Video",
+   date: "2026-06-08",
+   description: "Field footage collected during investigation.",
    lat: 34.0450,
    lng:-118.2350
 },
 
 {
    id: 4,
-   title: "document Archive",
+   title: "Document Archive",
+   category: "Document",
+   date: "2026-06-07",
+   description: "Archived supporting documents.",
    lat: 34.0700,
    lng: -118.2600
 }
@@ -60,7 +72,13 @@ return (
         position={[record.lat, record.lng]}
       >
         <Popup>
-          {record.title}
+          <strong>{record.title}</strong>
+          <br />
+          Category: {record.category}
+          <br />
+          Date: {record.date}
+          <br />
+          {record.description}
         </Popup>
       </Marker>
 ))}     

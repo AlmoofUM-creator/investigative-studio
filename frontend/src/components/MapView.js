@@ -8,6 +8,7 @@ function MapView() {
 const evidence = [
   {
    id: 1,
+   investigation: "LA-PROTEST-001",
    title: "Test Evidence Record",
    category: "Evidence",
    date: "2026-06-10",
@@ -18,6 +19,7 @@ const evidence = [
 
 {
    id: 2,
+   investigation: "LA-PROTEST-001",
    title:"Witness Interview",
    category: "Testimony",
    date: "2026-06-09",
@@ -28,6 +30,7 @@ const evidence = [
 
 {
    id: 3,
+   investigation: "LA-PROTEST-001",
    title:"Video Evidence",
    category: "Video",
    date: "2026-06-08",
@@ -38,6 +41,7 @@ const evidence = [
 
 {
    id: 4,
+   investigation: "LA-PROTEST-001",
    title: "Document Archive",
    category: "Document",
    date: "2026-06-07",
@@ -73,6 +77,8 @@ return (
       >
         <Popup>
           <strong>{record.title}</strong>
+          <br />
+          Investigations: {record.investigation}
           <br />
           Category: {record.category}
           <br />

@@ -5,8 +5,8 @@ import MapView from './components/MapView';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('welcome');
-  const [activeInvestigation, setActiveInvestigation] = useState(null);
   const [investigations, setInvestigations] = useState([]);
+  const [activeInvestigation, setActiveInvestigation] = useState(null);
   const evidence = [
     {
       id: 1,
@@ -117,9 +117,83 @@ Name={currentPage === 'map' ? 'active' : ''}
           </button>
         </div>
         )}
-        {currentPage === 'map' && (
-         <MapView activeInvestigation={activeInvestigation} />
+        {currentPage === 'investigation' && (
+         <div>
+           <h2>{activeInvestigation}</h2>
+ 
+           <p>Investigation Dashboard</p>
+
+           <p>Records: 4</p>
+           <p>Evidence: 1</p>
+           <p>Testimony: 1</p>
+           <p>Video: 1</p>
+           <p>Documents: 1</p>
+
+           <button onClick={() => setCurrentPage('map')}>
+             Open Map
+           </button>
+ 
+           <button onClick={() => setCurrentPage('evidence')}>
+            Evidence
+           </button>
+
+           <button onClick={() => setCurrentPage('timeline')}>
+            Timeline
+           </button>
+
+           <button onClick={() => setCurrentPage('documents')}>
+             Documents
+           </button>
+        
+         </div>
         )}
+        {currentPage === 'map' && (
+          <MapView activeInvestigation={activeInvestigation} />
+        )}
+        {currentPage === 'evidence' && (
+          <div>
+
+            <h2>Evidence</h2>
+
+            <p>
+              Investigation: <strong>{activeInvestigation}</strong>
+            </p>
+
+            <p>Evidence viewer coming soon.</p>
+
+            <button onClick={() => setCurrentPage('investigation')}>
+             Back to Dashboard
+            </button>
+
+          </div>
+        )}
+
+        {currentPage === 'timeline' && (
+         <div>
+
+           <h2>Timeline</h2>
+
+           <p>
+            Investigation: <strong>{activeInvestigation}</strong>
+           </p>
+
+
+           <p>Timeline system coming soon.</p>
+          
+           <button onClick={() => setCurrentPage('investigation')}>
+             Back to Dashboard
+           </button>
+
+         </div>
+        )}
+
+        {currentPage === 'documents' && (
+          <div>
+            <h2>Documents</h2>
+            <p>Document archive coming soon.</p>
+          </div>
+        )}
+
         {currentPage === 'archive' && (
           <div>
             <h2>Archive Screen</h2>
@@ -135,7 +209,7 @@ Name={currentPage === 'map' ? 'active' : ''}
             <button
               onClick={() => {
                 setActiveInvestigation('LA-PROTEST-001');
-                setCurrentPage('map');
+                setCurrentPage('investigation');
               }}
             >
               Open Investigation

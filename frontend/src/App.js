@@ -7,6 +7,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('welcome');
   const [investigations, setInvestigations] = useState([]);
   const [activeInvestigation, setActiveInvestigation] = useState(null);
+  const [selectedRecord, setSelectedRecord] = useState(null);
   const evidence = [
     {
       id: 1,
@@ -159,7 +160,56 @@ Name={currentPage === 'map' ? 'active' : ''}
               Investigation: <strong>{activeInvestigation}</strong>
             </p>
 
-            <p>Evidence viewer coming soon.</p>
+            <ul>
+
+              <li>
+                <button onClick={() => setSelectedRecord('Test Evidence Record')}>
+                  Test Evidence Record
+                </button>
+              </li>
+
+              <li>
+                <button onClick={() => setSelectedRecord('Witness Interview')}>
+                  Witness Interview
+                </button>
+              </li>
+
+              <li>
+                <button onClick={() => setSelectedRecord('Video Evidence')}>  
+                  Video Evidence
+                </button>
+              </li> 
+              
+              <li>
+                <button onClick={() => setSelectedRecord('Document Archive')}>  
+                  Document Archive
+                </button>
+              </li>
+
+            </ul>
+        {selectedRecord && (
+          <div>
+         
+            <h3>Selected Record</h3>
+
+           <p>
+             <strong>Title:</strong> {selectedRecord}
+           </p>
+      
+           <p>
+             <strong>Category:</strong> Test Category
+           </p>
+
+           <p>
+             <strong>Date:</strong> 2026-06-10
+           </p>
+
+           <p>
+             <strong>Description:</strong> Placeholder description.
+           </p>
+
+  </div>
+)}
 
             <button onClick={() => setCurrentPage('investigation')}>
              Back to Dashboard

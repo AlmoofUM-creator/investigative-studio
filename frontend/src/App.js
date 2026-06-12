@@ -8,6 +8,84 @@ function App() {
   const [investigations, setInvestigations] = useState([]);
   const [activeInvestigation, setActiveInvestigation] = useState(null);
   const [selectedRecord, setSelectedRecord] = useState(null);
+  const [mapEvent, setMapEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const investigationData = {
+   id: "LA-PROTEST-001",
+
+   records: [
+     {
+       id: 1,
+       title: "Test Evidence Record",
+       category: "Evidence",
+       date: "2026-06-10",
+       description: "Initial evidence marker used for testing."
+    },
+      
+     {
+       id: 2,
+       title: "Witness Interview",
+       category: "Testimony",
+       date: "2026-06-09",
+       description: "Recorded witness statement."
+    },
+
+     {
+       id: 3,
+       title: "Video",
+       category: "Video",
+       date: "2026-06-08",
+       description: "Field footage collected during investigation."
+    },
+     
+     {
+       id: 4,
+       title: "Document Archive",
+       category: "Document Archive",
+       date: "2026-06-07",
+       description: "Archived supporting documents."
+    }
+  ],
+
+  timeline: [
+    {
+      id: 1,
+      title: "Initial Evidence Collection",
+      date: "2026-06-07",
+      description: "Document archive entered into investigation.",
+      lat: 34.0522,
+      lng: -118.2437
+    }, 
+
+    {
+      id: 2,
+      title: "Video Captured",
+      date: "2026-06-08",
+      description: "Field footage collected.",
+      lat: 34.0523,
+      lng: -118.2440
+    },
+
+    {
+      id: 3,
+      title: "Witness Interview",
+      date: "2026-06-09",
+      description: "Witness statement recorded.",
+      lat: 34.0524,
+      lng: -118.2439
+    },
+
+    {
+      id: 4,
+      title: "Evidence Review",
+      date: "2026-06-10",
+      description: "Evidence record reviewed.",
+      lat: 34.0525,
+      lng: -118.2440
+    }
+  ]     
+};
+
   const evidence = [
     {
       id: 1,
@@ -149,7 +227,10 @@ Name={currentPage === 'map' ? 'active' : ''}
          </div>
         )}
         {currentPage === 'map' && (
-          <MapView activeInvestigation={activeInvestigation} />
+          <MapView 
+            activeInvestigation={activeInvestigation} 
+            mapEvent={mapEvent}
+          />
         )}
         {currentPage === 'evidence' && (
           <div>
@@ -162,50 +243,38 @@ Name={currentPage === 'map' ? 'active' : ''}
 
             <ul>
 
-              <li>
-                <button onClick={() => setSelectedRecord('Test Evidence Record')}>
-                  Test Evidence Record
-                </button>
-              </li>
-
-              <li>
-                <button onClick={() => setSelectedRecord('Witness Interview')}>
-                  Witness Interview
-                </button>
-              </li>
-
-              <li>
-                <button onClick={() => setSelectedRecord('Video Evidence')}>  
-                  Video Evidence
-                </button>
-              </li> 
-              
-              <li>
-                <button onClick={() => setSelectedRecord('Document Archive')}>  
-                  Document Archive
-                </button>
-              </li>
+              {investigationData.records.map(record => (
+               
+               <li key={record.id}>
+                       
+                 <button onClick={() => setSelectedRecord(record)}>
+                   {record.title}
+                 </button>
+               </li>
+ 
+              ))}
 
             </ul>
+
         {selectedRecord && (
           <div>
          
             <h3>Selected Record</h3>
 
            <p>
-             <strong>Title:</strong> {selectedRecord}
+             <strong>Title:</strong> {selectedRecord.title}
            </p>
       
            <p>
-             <strong>Category:</strong> Test Category
+             <strong>Category:</strong> {selectedRecord.category}
            </p>
 
            <p>
-             <strong>Date:</strong> 2026-06-10
+             <strong>Date:</strong> {selectedRecord.date}
            </p>
 
            <p>
-             <strong>Description:</strong> Placeholder description.
+             <strong>Description:</strong> {selectedRecord.description}
            </p>
 
   </div>
@@ -216,7 +285,7 @@ Name={currentPage === 'map' ? 'active' : ''}
             </button>
 
           </div>
-        )}
+          )}
 
         {currentPage === 'timeline' && (
          <div>
@@ -227,9 +296,50 @@ Name={currentPage === 'map' ? 'active' : ''}
             Investigation: <strong>{activeInvestigation}</strong>
            </p>
 
+           <ul>
 
-           <p>Timeline system coming soon.</p>
+             {investigationData.timeline.map(event => (
+              
+              <li key={event.id}>
+
+                <button onClick={() => setSelectedEvent(event)}>
+                  {event.title}
+                </button>
+             </li>
+           
+            ))}
+            
+          </ul>
           
+          {selectedEvent && (
+            <div>
+                
+              <h3>Selected Event</h3>
+
+              <p>
+                <strong>Title:</strong> {selectedEvent.title}
+              </p>
+
+              <p>
+                 <strong>Date:</strong> {selectedEvent.date}
+              </p>
+
+              <p>
+                <strong>Description:</strong> {selectedEvent.description}
+              </p>
+
+              <button 
+                onClick={() => {
+                  setMapEvent(selectedEvent);
+                  setCurrentPage('map');
+                }}
+              >                      
+                View On Map
+              </button>
+              
+            </div>
+        )}
+
            <button onClick={() => setCurrentPage('investigation')}>
              Back to Dashboard
            </button>

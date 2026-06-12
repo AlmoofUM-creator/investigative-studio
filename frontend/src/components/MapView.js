@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapView.css';
 
-function MapView({ activeInvestigation }) { 
+function MapView({ activeInvestigation, mapEvent }) {
+
+   if (mapEvent) {
+     console.log("Map Event Received:", mapEvent);
+   }
+
 const evidence = [
   {
    id: 1,
@@ -56,11 +61,47 @@ const filteredEvidence = activeInvestigation
     )
   : evidence;
 
-return (
+function RecenterMap({ mapEvent }) {
 
+  const map = useMap();
+
+  if (mapEvent) {
+    map.flyTo(
+      [mapEvent.lat, mapEvent.lng],
+      16
+    );
+  }
+
+  return null;
+}
+
+return (
   <div className="map-view">
 
   <h2>FIELD SYSTEM MAP</h2>
+{mapEvent && (
+  <div className="selected-event-panel">
+
+    <h3>Selected Timeline Event</h3>
+    
+    <p>
+      <strong>Title:</strong> {mapEvent.title}
+    </p>
+
+    <p>
+      <strong>Date:</strong> {mapEvent.date}
+    </p>
+
+    <p>
+      <strong>Latitude:</strong> {mapEvent.lat}
+    </p>
+  
+    <p>
+      <strong>Longitude:</strong> {mapEvent.lng}
+    </p>
+
+  </div>
+)}
 
   <div className="map-container">
 

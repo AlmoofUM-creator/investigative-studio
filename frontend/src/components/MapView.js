@@ -134,8 +134,27 @@ return (
           {record.description}
         </Popup>
       </Marker>
-))}     
+))}
 
+{mapEvent && (
+  <Marker
+    position={[mapEvent.lat, mapEvent.lng]}     
+  >
+    <Popup>
+
+      <strong>{mapEvent.title}</strong>
+
+     <br />
+
+     {mapEvent.date}
+
+     <br />
+   
+     {mapEvent.description}
+ 
+   </Popup>
+ </Marker>
+)}
   </MapContainer>
  
  </div>

@@ -115,7 +115,8 @@ return (
        attribution='&copy; OpenStreetMap contributors'
        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
      />
-     
+
+     <RecenterMap mapEvent={mapEvent} />
      {filteredEvidence.map(record => (
       <Marker
         key={record.id}

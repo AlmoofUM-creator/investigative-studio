@@ -336,9 +336,15 @@ Name={currentPage === 'map' ? 'active' : ''}
            <div>
 
              <h3>Current Event</h3>
-
              <p>
-               <strong> Title</strong>
+               Event {currentEventIndex + 1}
+               {' '}
+               of
+               {' '}
+               {investigationData.timeline.length}
+             </p>
+             <p>
+               <strong>Title</strong>
                {' '}
                {currentTimelineEvent.title}
              </p>

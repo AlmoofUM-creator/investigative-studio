@@ -338,7 +338,21 @@ Name={currentPage === 'map' ? 'active' : ''}
              <h3>Current Event</h3>
 
              <p>
+               <strong> Title</strong>
+               {' '}
                {currentTimelineEvent.title}
+             </p>
+
+             <p>
+                <strong>Date:</strong>
+                {' '}
+                {currentTimelineEvent.date}
+             </p>
+             
+             <p>
+               <strong>Description:</strong>
+               {' '}
+               {currentTimelineEvent.description}
              </p>
 
              <button

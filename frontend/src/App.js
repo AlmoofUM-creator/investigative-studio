@@ -10,7 +10,10 @@ function App() {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [mapEvent, setMapEvent] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+
   const investigationData = {
+
    id: "LA-PROTEST-001",
 
    records: [
@@ -85,6 +88,9 @@ function App() {
     }
   ]     
 };
+
+ const currentTimelineEvent =
+    investigationData.timeline[currentEventIndex];
 
   const evidence = [
     {
@@ -295,6 +301,56 @@ Name={currentPage === 'map' ? 'active' : ''}
            <p>
             Investigation: <strong>{activeInvestigation}</strong>
            </p>
+
+           <div>
+
+             <button
+               onClick={() => {
+                 if (currentEventIndex > 0) {
+                   setCurrentEventIndex(
+                     currentEventIndex - 1
+                   );
+                 }
+               }}
+             >
+               Previous Event 
+             </button>
+
+              <button
+                onClick={() => {
+                  if (
+                    currentEventIndex <
+                    investigationData.timeline.length - 1
+                  ) {
+                    setCurrentEventIndex(
+                      currentEventIndex + 1
+                    );
+                  }
+                }}
+              >
+                Next Event
+              </button>
+
+           </div>
+
+           <div>
+
+             <h3>Current Event</h3>
+
+             <p>
+               {currentTimelineEvent.title}
+             </p>
+
+             <button
+               onClick={() => {
+                setMapEvent(currentTimelineEvent);
+                setCurrentPage('map');
+              }}
+            >
+              View Current Event On Map
+            </button>
+                
+          </div> 
 
            <ul>
 

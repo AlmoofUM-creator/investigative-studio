@@ -121,11 +121,14 @@ function App() {
   
  useEffect(() => {
 
-   if (currentTimelineEvent) {
+   if (
+     followTimeline &&
+     currentTimelineEvent
+   ) {
      setMapEvent(currentTimelineEvent);
-    }
+   }
 
-  }, [currentTimelineEvent]);
+ }, [currentTimelineEvent, followTimeline]);
   
   const evidence = [
     {
@@ -274,6 +277,16 @@ Name={currentPage === 'map' ? 'active' : ''}
               onClick={() => setCurrentPage('timeline')}
             >
               Back To Timeline
+            </button>
+
+            <button
+              onClick={() =>
+                setFollowTimeline(!followTimeline)
+              }
+            >
+              Follow Timeline:
+              {' '}
+              {followTimeline ? 'ON' : 'OFF'}
             </button>
 
              <MapView 

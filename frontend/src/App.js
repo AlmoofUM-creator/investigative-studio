@@ -11,8 +11,11 @@ function App() {
   const [mapEvent, setMapEvent] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
-
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [followTimeline, setFollowTimeline] = useState(true);
   const investigationData = {
+
+
 
    id: "LA-PROTEST-001",
 
@@ -86,12 +89,44 @@ function App() {
       lat: 34.0525,
       lng: -118.2440
     }
-  ]     
-};
+ ]     
+ };
 
+ useEffect(() => {
+
+   if (!isPlaying) return;
+
+  const timer = setInterval(() => {
+    
+    setCurrentEventIndex((previousIndex) => {
+
+      if (
+        previousIndex <
+        investigationData.timeline.length - 1
+      ) {
+        return previousIndex + 1;
+      }
+
+      return previousIndex;
+
+    });
+
+  }, 2000);
+
+  return () => clearInterval(timer);
+   
+}, [isPlaying, investigationData.timeline.length]);
  const currentTimelineEvent =
     investigationData.timeline[currentEventIndex];
+  
+ useEffect(() => {
 
+   if (currentTimelineEvent) {
+     setMapEvent(currentTimelineEvent);
+    }
+
+  }, [currentTimelineEvent]);
+  
   const evidence = [
     {
       id: 1,
@@ -233,10 +268,20 @@ Name={currentPage === 'map' ? 'active' : ''}
          </div>
         )}
         {currentPage === 'map' && (
-          <MapView 
-            activeInvestigation={activeInvestigation} 
-            mapEvent={mapEvent}
-          />
+          <div>
+
+            <button
+              onClick={() => setCurrentPage('timeline')}
+            >
+              Back To Timeline
+            </button>
+
+             <MapView 
+               activeInvestigation={activeInvestigation} 
+               mapEvent={mapEvent}
+            />
+            
+          </div>
         )}
         {currentPage === 'evidence' && (
           <div>
@@ -308,13 +353,21 @@ Name={currentPage === 'map' ? 'active' : ''}
                onClick={() => {
                  if (currentEventIndex > 0) {
                    setCurrentEventIndex(
-                     currentEventIndex - 1
+                     currentEventIndex -1
                    );
                  }
                }}
              >
                Previous Event 
              </button>
+
+              <button
+                onClick={() => {
+                  setIsPlaying(!isPlaying);
+                }}
+              >
+                {isPlaying ? 'Pause' : 'Play'}
+              </button>
 
               <button
                 onClick={() => {
@@ -329,6 +382,7 @@ Name={currentPage === 'map' ? 'active' : ''}
                 }}
               >
                 Next Event
+
               </button>
 
            </div>
@@ -348,7 +402,11 @@ Name={currentPage === 'map' ? 'active' : ''}
                min="0"
                max={investigationData.timeline.length - 1}
                value={currentEventIndex}
-               readOnly
+               onChange={(event) => {
+                 setCurrentEventIndex(
+                   Number(event.target.value)
+                 );
+               }}
              />
              <p>
                <strong>Title</strong>

@@ -343,6 +343,13 @@ Name={currentPage === 'map' ? 'active' : ''}
                {' '}
                {investigationData.timeline.length}
              </p>
+             <input
+               type="range"
+               min="0"
+               max={investigationData.timeline.length - 1}
+               value={currentEventIndex}
+               readOnly
+             />
              <p>
                <strong>Title</strong>
                {' '}
